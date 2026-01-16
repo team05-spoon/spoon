@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spoon.dao.NoticeDAO">
+
+    <!-- 공지사항 목록 -->
+    <select id="findAll" resultType="com.spoon.dto.NoticeDTO">
+        SELECT n_no, n_title, n_nb, n_date
+        FROM notice
+        ORDER BY n_no DESC
+    </select>
+
+    <!-- 공지사항 상세 -->
+    <select id="findByNo" resultType="com.spoon.dto.NoticeDTO">
+        SELECT n_no, n_title, n_nb, n_date
+        FROM notice
+        WHERE n_no = #{n_no}
+    </select>
+
+    <!-- 공지사항 등록 -->
+    <insert id="insert" parameterType="com.spoon.dto.NoticeDTO">
+        INSERT INTO notice (
+            n_no, n_title, n_nb, n_date
+        ) VALUES (
+            seq_notice.NEXTVAL,
+            #{n_title}, #{n_nb}, SYSDATE
+        )
+    </insert>
+
+    <!-- 공지사항 삭제 -->
+    <delete id="delete" parameterType="long">
+        DELETE FROM notice WHERE n_no = #{n_no}
+    </delete>
+
+    <!-- ✅ 공지사항 수정 -->
+    <update id="update" parameterType="com.spoon.dto.NoticeDTO">
+	  UPDATE notice
+	  SET
+	    n_title = #{n_title, jdbcType=VARCHAR},
+	    n_nb    = #{n_nb, jdbcType=VARCHAR}
+	  WHERE n_no = #{n_no, jdbcType=NUMERIC}
+	</update>
+
+</mapper>

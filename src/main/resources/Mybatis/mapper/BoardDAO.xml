@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spoon.dao.BoardDAO">
+
+    <!-- 게시글 목록 -->
+    <select id="findAll" resultType="com.spoon.dto.BoardDTO">
+        SELECT b_no, b_title, b_write, b_memo, b_date, m_no
+        FROM board
+        ORDER BY b_no DESC
+    </select>
+
+    <!-- 게시글 상세 -->
+    <select id="findByNo" resultType="com.spoon.dto.BoardDTO">
+        SELECT b_no, b_title, b_write, b_memo, b_date, m_no
+        FROM board
+        WHERE b_no = #{b_no}
+    </select>
+
+<insert id="insert" parameterType="com.spoon.dto.BoardDTO">
+    INSERT INTO board (
+        b_no, b_title, b_write, b_memo, b_date, m_no
+    ) VALUES (
+        seq_board.NEXTVAL,
+        #{b_title, jdbcType=VARCHAR},
+        #{b_write, jdbcType=VARCHAR},
+        #{b_memo,  jdbcType=VARCHAR},
+        SYSDATE,
+        #{m_no,    jdbcType=NUMERIC}
+    )
+</insert>
+
+    <!-- 게시글 수정 -->
+<update id="update" parameterType="com.spoon.dto.BoardDTO">
+  UPDATE board
+  SET
+    b_title = #{b_title, jdbcType=VARCHAR},
+    b_memo  = #{b_memo,  jdbcType=VARCHAR}
+  WHERE b_no = #{b_no, jdbcType=NUMERIC}
+</update>
+
+
+    <!-- 게시글 삭제 -->
+    <delete id="delete">
+        DELETE FROM board WHERE b_no = #{b_no}
+    </delete>
+
+</mapper>
+

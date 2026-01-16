@@ -1,0 +1,326 @@
+@charset "UTF-8";
+
+/* list */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Noto Sans KR', sans-serif; background: #f9f9f9; color: #111; }
+a { text-decoration: none; color: inherit; }
+
+/* 헤더 */
+.header-wrap {
+    width: 100%; height: 70px; background: #fff;
+    display: flex; align-items: center; padding: 0 5%; border-bottom: 1px solid #eee;
+}
+.logo { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: #111; }
+
+/* 컨테이너 및 제목 */
+.container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+.page-title { font-size: 28px; font-weight: 900; margin-bottom: 30px; color: #2f7d32; }
+
+/* 상품 그리드 레이아웃 */
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* 상품 카드 스타일 */
+.item-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.item-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* 상품 이미지 */
+.item-img-box {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 정사각형 유지 */
+    overflow: hidden;
+    background: #f4f4f4;
+}
+.item-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+.item-card:hover .item-img-box img {
+    transform: scale(1.1);
+}
+
+/* 상품 정보 */
+.item-info { padding: 20px; }
+.item-name { font-size: 18px; font-weight: 700; margin-bottom: 10px; display: block; }
+.item-price { font-size: 20px; font-weight: 900; color: #2f7d32; }
+.item-price span { font-size: 14px; font-weight: 400; color: #888; margin-left: 2px; }
+
+/* 공통 초기화 */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #111; }
+a { text-decoration: none; color: inherit; }
+
+/* 헤더 */
+.header-wrap {
+    width: 100%; height: 70px; background: #fff;
+    display: flex; align-items: center; padding: 0 5%; border-bottom: 1px solid #eee;
+}
+.logo { font-size: 24px; font-weight: 900; color: #2f7d32; }
+
+/* 컨테이너 */
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+/* 상단 상품 영역 레이아웃 */
+.product-top-area {
+    display: flex; gap: 60px; margin-bottom: 40px; align-items: flex-start;
+}
+
+.img-area { flex: 1; }
+.main-img { 
+    width: 100%; aspect-ratio: 1/1; object-fit: cover; 
+    border-radius: 12px; border: 1px solid #f0f0f0; 
+}
+
+.info-area { flex: 1; }
+.item-meta-top { color: #999; font-size: 14px; margin-bottom: 10px; }
+.item-title { font-size: 32px; font-weight: 700; margin: 0 0 15px 0; line-height: 1.2; }
+.item-price-large { font-size: 30px; font-weight: 900; color: #2f7d32; margin-bottom: 30px; }
+.item-price-large span { font-size: 20px; margin-left: 2px; }
+
+.item-simple-info { border-top: 1px solid #f0f0f0; padding-top: 20px; }
+.info-row { display: flex; margin-bottom: 12px; font-size: 15px; }
+.info-row b { width: 80px; color: #666; }
+.info-row span { color: #333; }
+
+.btn-detail-view {
+    width: 100%; margin-top: 25px; padding: 15px; background: #f8f9fa;
+    border: 1px solid #ddd; border-radius: 8px; font-weight: 700; color: #555;
+    cursor: pointer; transition: 0.2s;
+}
+.btn-detail-view:hover { background: #eee; }
+
+/* 하단 주문 섹션 (중앙 집중형 바) */
+.order-section {
+    background: #fff; border: 2px solid #2f7d32; border-radius: 15px;
+    padding: 30px; margin: 60px 0;
+}
+.order-flex {
+    display: flex; align-items: center; justify-content: space-between; gap: 30px;
+}
+
+.qty-label { display: block; font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 700; }
+#quantity { 
+    width: 120px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; 
+}
+
+.total-label { display: block; font-size: 14px; color: #666; margin-bottom: 5px; text-align: right; }
+.total-price-num { font-size: 32px; font-weight: 900; color: #2f7d32; display: block; text-align: right; }
+
+.btn-group-wide { display: flex; gap: 10px; }
+.btn-cart-main { 
+    background: #2f7d32; color: #fff; border: none; padding: 18px 35px; 
+    border-radius: 8px; font-weight: 900; font-size: 18px; cursor: pointer; 
+}
+.btn-goto-cart-main { 
+    background: #444; color: #fff; padding: 18px 25px; 
+    border-radius: 8px; font-weight: 700; font-size: 16px; display: flex; align-items: center;
+}
+
+/* 상세 설명 영역 */
+.detail-description-area { margin-top: 100px; }
+.detail-tab-menu { 
+    border-bottom: 2px solid #333; display: flex; justify-content: center; margin-bottom: 40px; 
+}
+.detail-tab-menu div { 
+    padding: 15px 40px; font-weight: 900; font-size: 18px; color: #333; 
+    border: 1px solid #333; border-bottom: none; background: #fff; position: relative; top: 2px;
+}
+
+.detail-content-wrapper { text-align: center; padding: 20px 0; }
+.detail-text-box { 
+    font-size: 18px; line-height: 1.8; color: #444; margin-bottom: 50px; 
+    white-space: pre-wrap; word-break: break-all;
+}
+.full-detail-img { max-width: 100%; margin-top: 30px; border-radius: 8px; }
+
+/* 하단 네비게이션 */
+.bottom-navigation { 
+    margin-top: 80px; padding: 40px 0; border-top: 1px solid #eee; text-align: center; 
+}
+.nav-link { color: #888; transition: 0.2s; }
+.nav-link:hover { color: #2f7d32; font-weight: 700; }
+.divider { color: #eee; margin: 0 15px; }
+
+/* 푸터 */
+footer { text-align: center; padding: 50px 0; color: #999; font-size: 14px; border-top: 1px solid #f9f9f9; }
+
+/* 상세 영역이 나타날 때 애니메이션 */
+.detail-description-area {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 버튼 스타일 강조 */
+.btn-detail-view {
+    background-color: #2f7d32; /* 농장 테마 색상 */
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-detail-view:hover {
+    background-color: #1b5e20;
+    transform: scale(1.02);
+}
+
+/* itmesellerview */
+
+/* 판매자 전용 라벨 */
+.seller-badge {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* 관리 버튼 영역 */
+.seller-btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-seller-edit {
+    flex: 2;
+    background: #2f7d32;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-seller-del {
+    flex: 1;
+    background: #fff;
+    color: #999;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+.btn-seller-del:hover { background: #fafafa; color: #ff5252; border-color: #ff5252; }
+
+/* update */
+
+.update-card {
+    background: #fff; border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px;
+}
+
+.form-title { font-size: 24px; font-weight: 900; color: #2f7d32; margin-bottom: 30px; text-align: center; }
+
+.item-form-group { margin-bottom: 20px; }
+.item-form-group label { display: block; font-weight: 700; margin-bottom: 8px; color: #333; }
+
+.read-only-text { padding: 12px; background: #f5f5f5; border-radius: 8px; color: #777; font-weight: 700; border: 1px solid #eee; }
+
+.file-info { font-size: 13px; color: #888; margin-top: 5px; }
+
+.btn-update-submit { 
+    width: 100%; padding: 15px; background: #2f7d32; color: #fff; 
+    border: none; border-radius: 8px; font-weight: 700; font-size: 17px; cursor: pointer; 
+}
+.btn-update-submit:hover { background: #1b5e20; }
+
+.btn-cancel { 
+    width: 100%; padding: 15px; background: #eee; color: #555; 
+    border: none; border-radius: 8px; font-weight: 700; font-size: 17px; cursor: pointer; margin-top: 10px;
+}
+
+/* itemwrite */
+
+.write-container {
+    max-width: 800px; margin: 50px auto; background: #fff;
+    padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-header { text-align: center; margin-bottom: 40px; }
+.form-header h2 { font-size: 28px; color: #2f7d32; font-weight: 900; }
+.form-header p { color: #888; margin-top: 10px; }
+
+.input-row { margin-bottom: 25px; }
+.input-row label { display: block; font-weight: 700; margin-bottom: 10px; color: #333; }
+
+.form-control {
+    width: 100%; padding: 12px 15px; border: 1px solid #ddd;
+    border-radius: 8px; font-size: 15px; transition: border-color 0.3s;
+}
+.form-control:focus { border-color: #2f7d32; outline: none; }
+
+.file-input-group { background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px dashed #ccc; }
+
+.btn-submit-group { display: flex; gap: 10px; margin-top: 40px; }
+.btn-save { flex: 2; background: #2f7d32; color: #fff; border: none; padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 16px; }
+.btn-reset { flex: 1; background: #f5f5f5; color: #666; border: none; padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 16px; }
+
+.btn-save:hover { background: #1b5e20; }
+.btn-reset:hover { background: #e0e0e0; }
+
+/* myitem */
+
+.my-item-container {
+    max-width: 900px; margin: 40px auto; padding: 0 20px;
+}
+
+.my-item-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #2f7d32;
+}
+
+.my-item-card {
+    display: flex; align-items: center; background: #fff;
+    padding: 15px 20px; border-radius: 12px; margin-bottom: 15px;
+    border: 1px solid #eee; transition: box-shadow 0.3s;
+}
+.my-item-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+
+.my-item-thumb {
+    width: 90px; height: 90px; border-radius: 8px; 
+    object-fit: cover; margin-right: 20px;
+}
+
+.my-item-details { flex: 1; }
+.my-item-details .name {
+    font-size: 18px; font-weight: 700; color: #333;
+    text-decoration: none; display: block; margin-bottom: 5px;
+}
+.my-item-details .price { font-size: 16px; color: #2f7d32; font-weight: bold; }
+
+.my-item-actions { display: flex; flex-direction: column; gap: 5px; }
+
+.btn-my-action {
+    padding: 6px 12px; border-radius: 4px; font-size: 13px;
+    font-weight: 700; text-decoration: none; text-align: center;
+    border: 1px solid #ddd; color: #666; transition: 0.2s;
+}
+.btn-my-action.edit:hover { background: #2f7d32; color: #fff; border-color: #2f7d32; }
+.btn-my-action.del:hover { background: #ff5252; color: #fff; border-color: #ff5252; }

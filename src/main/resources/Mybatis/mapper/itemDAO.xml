@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spoon.dao.itemDAO">
+	<select id="viewDao" resultType="com.spoon.dto.itemDTO">
+		select * from item where i_no = #{param1}
+	</select>
+	<select id="itemMyListDao" resultType="com.spoon.dto.itemDTO">
+		select * from item where s_no = #{s_no}
+	</select>
+	<select id="findByiNo" resultType="com.spoon.dto.itemDTO">
+        SELECT * from item WHERE i_no = #{i_no}
+    </select>
+	<insert id="writeDao">
+		insert into item values (seq_item.nextval,#{i_name},#{i_price},#{i_timage},#{i_dimage},#{i_option},#{i_ctg},#{i_ex},#{s_no})
+	</insert>
+	<update id="updateDao">
+		update item set i_price=#{i_price},i_timage=#{i_timage},i_dimage=#{i_dimage},i_option=#{i_option},i_ctg=#{i_ctg},i_ex=#{i_ex} where i_no=#{i_no}
+	</update>
+	<delete id="deleteDao">
+		delete from item where i_no=#{param1} 
+	</delete>
+	<select id="listDao" resultType="com.spoon.dto.itemDTO">
+	    SELECT * FROM item
+	    <where>
+	        <if test="i_ctg != null and i_ctg != ''">
+	            AND i_ctg = #{i_ctg}
+	        </if>
+	    </where>
+	    ORDER BY i_no ASC
+	</select>
+</mapper>

@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+/* 기본 설정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+/* 테이블 컨테이너 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+/* 테이블 헤더 */
+thead tr {
+    background-color: #2f7d32;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+} 
+
+/* 테이블 바디 */
+tbody tr:hover {
+    background-color: #f1f8f1;
+    transition: 0.2s;
+}
+
+/* 버튼 스타일 (승인/반려) */
+.btn-action {
+    display: inline-block; /* 링크 버튼의 패딩이 잘 먹도록 추가 */
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.btn-approve {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}
+
+.btn-approve:hover {
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+.btn-reject {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #c62828;
+}
+
+.btn-reject:hover {
+    background-color: #c62828;
+    color: #fff;
+}
+
+/* 메인으로 버튼 */
+.btn-home {
+    display: inline-block;
+    margin-top: 20px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-home:hover {
+    text-decoration: underline;
+}
+
+.badge-seller {
+    background-color: #2f7d32;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+
+.input-field {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.input-field:focus {
+    border-color: #2f7d32;
+    outline: none;
+    background-color: #f9fbf9;
+}
+
+.info-table th {
+    background-color: #f4f7f6;
+    text-align: right;
+    width: 120px;
+    font-weight: bold;
+}
+
+.action-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-edit, .btn-revoke {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* seller.css 끝에 추가 */
+select.input-field {
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #2f7d32;
+    color: #2f7d32;
+    font-weight: bold;
+}
+
+select.input-field:hover {
+    background-color: #f1f8f1;
+}
+
+.info-table th {
+    background-color: #f8f9fa;
+    color: #2f7d32;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #eee;
+}
+
+.info-table td {
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 12px;
+}
+
+/* 상세보기 하단 링크 정렬 */
+.footer-link {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+/* seller.css 추가 내용 */
+.write-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.write-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2f7d32;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+}
+
+.input-field:focus {
+    border-color: #2f7d32;
+    outline: none;
+    box-shadow: 0 0 5px rgba(47, 125, 50, 0.2);
+}
