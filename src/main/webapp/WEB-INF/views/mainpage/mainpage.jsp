@@ -64,7 +64,7 @@
                         <a href="/member/memberlist">👥 회원 목록</a>
                         <a href="/seller/sellerlist2">🏢 판매자 목록</a>
                         <a href="/seller/sellerlist">📩 판매 신청 내역</a>
-                        <a href="/item/adminitemlist">📦 전체 상품 관리</a>
+                        <a href="${pageContext.request.contextPath}/item/adminitemlist">📦 전체 상품 관리</a>
                     </c:when>
                     <c:when test="${member.m_temp eq 'SELLER'}">
                         <a href="/item/itemwriteForm">✍️ 신규 상품 등록</a>

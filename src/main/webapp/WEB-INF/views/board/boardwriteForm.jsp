@@ -14,7 +14,7 @@
 
 <header class="header-wrap">
   <a href="${pageContext.request.contextPath}/" class="logo">
-    <img src="${pageContext.request.contextPath}/images/main.png" alt="LOGO">
+    <img src="${pageContext.request.contextPath}/images/farm.png" alt="LOGO">
   </a>
 </header>
 

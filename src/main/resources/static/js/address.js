@@ -17,7 +17,7 @@ function goPopup() {
 function jusoCallBack(roadFullAddr, jibunAddr, zipNo) {
     // 우편번호와 주소 필드가 존재하는지 확인 후 값 세팅
     var zipInput = document.getElementById("zipNo");
-    var addrInput = document.getElementById("d_addr");
+    var addrInput = document.getElementById("roadFullAddr");
 
     if (zipInput) {
         zipInput.value = zipNo;
