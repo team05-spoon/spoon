@@ -42,6 +42,8 @@ function init(){
 		<input type="hidden" id="encodingType" name="encodingType" value="EUC-KR"/>
 		 -->
 		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 END-->
+		
 	</form>
+	
 </body>
 </html>

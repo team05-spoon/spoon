@@ -52,17 +52,18 @@
                     <input type="text" id="d_tel" name="d_tel">
                 </div>
             </div>
-            <div class="order-input-group">
-    <label for="d_addr">배송 주소</label>
-    <div style="display: flex; gap: 5px; margin-bottom: 5px;">
-        <input type="text" id="zipNo" placeholder="우편번호" readonly 
-               style="width: 120px; flex: none; background-color: #f9f9f9;">
-        <button type="button" onclick="goPopup()" 
-                style="padding: 0 15px; background-color: #fff; border: 1px solid #ccc; cursor: pointer; font-size: 13px; font-weight: bold;">
-            주소 검색
-        </button>
-    </div>
-    <input type="text" id="roadFullAddr" name="d_addr" placeholder="주소 검색 버튼을 눌러주세요" readonly 
+			 <div class="order-input-group">
+			    <label for="d_addr">배송 주소</label>
+			    <div style="display: flex; gap: 5px; margin-bottom: 5px;">
+			        <input type="text" id="zipNo" name="zipNo" placeholder="우편번호" readonly 
+			               style="width: 80px; background-color: #f9f9f9;">
+			        
+			        <button type="button" onclick="goPopup()" 
+			                style="padding: 0 15px; background-color: #fff; border: 1px solid #ccc; cursor: pointer; font-size: 13px; font-weight: bold;">
+			            주소 검색
+			        </button>
+			    </div>
+    <input type="text" id="d_addr" name="d_addr" placeholder="주소 검색 버튼을 눌러주세요" readonly 
            style="width: 100%; background-color: #f9f9f9;">
 </div>
         </div>

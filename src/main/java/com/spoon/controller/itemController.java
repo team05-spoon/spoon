@@ -62,6 +62,12 @@ public class itemController {
 	    model.addAttribute("list", dao.listDao(i_ctg));
 	    return "item/itemlist";
 	}
+	@RequestMapping("/item/adminitemlist")
+	public String adminitemlist(@RequestParam(value="i_ctg", required=false) String i_ctg, Model model) {
+	    // 파라미터로 받은 i_ctg를 listDao에 전달합니다.
+	    model.addAttribute("list", dao.listDao(i_ctg));
+	    return "item/adminitemlist";
+	}
 	
 	@RequestMapping("/item/myitemlist")
 	public String myitemlist(Principal principal, Model model) {

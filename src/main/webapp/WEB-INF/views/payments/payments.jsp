@@ -24,7 +24,6 @@
 
 <script>
     async function requestPay() {
-        // CSRF 정보 가져오기
         const token = $("meta[name='_csrf']").attr("content");
         const header = $("meta[name='_csrf_header']").attr("content");
 
@@ -47,26 +46,31 @@
                 }
             });
 
-            // PortOne V2 성공 조건: response.code가 없거나 undefined인 경우
-            if (response.paymentId) {
+            // ✅ 수정된 성공 조건 (V2에서는 code가 존재하지 않아야 성공임)
+            if (response.code == null) { 
                 $.ajax({
                     url: "/payments/complete",
                     method: "POST",
                     contentType: "application/json",
-                    // AJAX 요청 시 CSRF 헤더 전송
                     beforeSend: function(xhr) {
                         if(header && token) xhr.setRequestHeader(header, token);
                     },
+                    // ✅ 중요: 컨트롤러에서 ordersDTO로 바로 받을 수 있게 데이터를 구성합니다.
                     data: JSON.stringify({ 
                         paymentId: response.paymentId,
-                        orderName: "${orderName}"
+                        // orderwriteForm에서 넘어왔던 주문 정보들을 여기서 함께 보냅니다.
+                        o_name: "${orderData.o_name}",
+                        o_tel: "${orderData.o_tel}",
+                        o_addr: "${orderData.o_addr}",
+                        i_no: "${orderData.i_no}",
+                        c_count: "${orderData.c_count}",
+                        c_price: "${orderData.c_price}"
                     }),
                     success: function(res) {
                         if(res.trim() === "success") {
-                            // 여기가 바로 성공 화면 이동입니다!
-                            location.href = "/payments/success";
+                            location.href = "/order/orderlist"; // 주문 목록으로 이동
                         } else {
-                            alert("DB 저장 오류: " + res);
+                            alert("주문 처리 중 오류 발생: " + res);
                         }
                     },
                     error: function(xhr) {
@@ -74,9 +78,11 @@
                     }
                 });
             } else {
-                alert("결제에 실패하였습니다: " + response.message);
+                // 결제창을 닫거나 실패한 경우
+                alert("결제가 취소/실패되었습니다: " + response.message);
             }
         } catch (e) {
+            console.error(e);
             alert("결제 프로세스 중 오류 발생");
         }
     }

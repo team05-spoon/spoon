@@ -60,7 +60,7 @@
                 <select name="i_ctg">
                 	<option value=" ">선택</option>
                 	<option value="fruit">과일</option>
-                	<option value="meet">육류</option>
+                	<option value="meat">육류</option>
                 	<option value="seafood">수산물</option>
                 	<option value="vegetable">야채</option>
                 </select>

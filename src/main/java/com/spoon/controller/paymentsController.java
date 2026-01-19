@@ -86,4 +86,8 @@ public class paymentsController {
         // prefix: /WEB-INF/views/, suffix: .jsp 설정 기준
         return "payments/success"; 
     }
+    @RequestMapping("/payments/fail")
+    public String paymentFailure() {
+    	return "payments/fail";
+    }
 }

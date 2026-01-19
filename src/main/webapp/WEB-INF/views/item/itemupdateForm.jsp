@@ -51,6 +51,17 @@
                 <label>옵션 정보</label>
                 <input type="text" name="i_option" class="form-control" value="${update.i_option}">
             </div>
+            
+            <div class="item-form-group">
+                <label>카테고리</label>
+                <select name="i_ctg" class="form-control" value="${update.i_ctg}">
+                <option value=" ">선택</option>
+                	<option value="fruit">과일</option>
+                	<option value="meat">육류</option>
+                	<option value="seafood">수산물</option>
+                	<option value="vegetable">야채</option>
+                </select>
+            </div>
 
             <div class="item-form-group">
                 <label>상품 상세 설명</label>

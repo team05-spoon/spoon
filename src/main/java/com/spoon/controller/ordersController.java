@@ -62,20 +62,12 @@ public class ordersController {
     }
 
     @RequestMapping("/order/orderwrite")
-    public String orderComplete(ordersDTO dto, Principal principal,RedirectAttributes rttr) {
-    	 if (principal == null) return "redirect:/member/memberlogin";
-    	String m_id = principal.getName();
-        memberDTO member = memberdao.findByMid(m_id);
-        int m_no = member.getM_no();
+    public String orderwrite(ordersDTO dto, Principal principal, RedirectAttributes rttr) {
+        if (principal == null) return "redirect:/member/memberlogin";
         
-        dto.setM_no(m_no);
-        
-    	dao.writeDao(dto);
-    	
-    	
-    	rttr.addFlashAttribute("amount", dto.getC_price() * dto.getC_count());
-        rttr.addFlashAttribute("orderName", "Spoon 주문 결제");
-        rttr.addFlashAttribute("merchantUid", "spoon_" + System.currentTimeMillis());
+        // 사용자가 입력한 d_name, d_addr 등이 담긴 dto를 'orderData'라는 이름으로 결제창에 보냅니다.
+        rttr.addFlashAttribute("orderData", dto);
+        rttr.addFlashAttribute("amount", dto.getC_price() * dto.getC_count());
         
         return "redirect:/payments/payments";
     }
@@ -92,13 +84,33 @@ public class ordersController {
     }
  // 4. 결제 완료 처리 (AJAX)
     @ResponseBody
+    @RequestMapping("/payments/completePayment")
     public String completePayment(@RequestBody Map<String, Object> data, Principal principal) {
         try {
             if (principal == null) return "error:auth";
-            memberDTO member = memberdao.findByMid(principal.getName());
+            String m_id = principal.getName();
+            memberDTO member = memberdao.findByMid(m_id);
+
+            // AJAX로 넘어온 데이터들로 DTO 생성
+            ordersDTO order = new ordersDTO();
+            order.setM_no(member.getM_no());
+            order.setO_name((String)data.get("o_name"));
+            order.setO_tel((String)data.get("o_tel"));
+            order.setO_addr((String)data.get("o_addr"));
+            order.setD_name((String)data.get("d_name"));
+            order.setD_tel((String)data.get("d_tel"));
+            order.setD_addr((String)data.get("d_addr"));
+            order.setI_no(Integer.parseInt(data.get("i_no").toString()));
+            order.setC_count(Integer.parseInt(data.get("c_count").toString()));
+            order.setC_price(Long.parseLong(data.get("c_price").toString()));
+
+            // [중요] 실제로 DB에 저장하는 DAO 메서드 호출
+            // (메서드 명은 본인의 DAO에 맞게 수정하세요: 예: insertOrder)
+            dao.writeDao(order); 
             
             // 장바구니 비우기
             cartdao.cleancart(member.getM_no());
+            
             return "success";
         } catch (Exception e) {
             e.printStackTrace();

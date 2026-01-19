@@ -11,7 +11,7 @@ description = 'Pilotproject for Spring Boot'
 
 java {
    toolchain {
-      languageVersion = JavaLanguageVersion.of(21)
+      languageVersion = JavaLanguageVersion.of(17)
    }
 }
 
@@ -46,6 +46,7 @@ dependencies {
    implementation 'org.springframework.boot:spring-boot-starter-security'
    testImplementation 'org.springframework.security:spring-security-test'
 }
+
 eclipse.wtp.facet {
    facet name: 'jst.web', version: '5.0'
 }
