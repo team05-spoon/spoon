@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css">
     <script src="${pageContext.request.contextPath}/js/order.js"></script>
-    <script src="${pageContext.request.contextPath}/js/address.js"></script>
 </head>
 <body style="background-color: #f4f7f6;">
 

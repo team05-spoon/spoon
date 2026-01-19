@@ -49,32 +49,47 @@ public class paymentsController {
     @ResponseBody
     public String completePayment(@RequestBody Map<String, Object> data, Principal principal) {
         if (principal == null) return "error:auth";
+        
         try {
+            // 1. 회원 정보 및 장바구니 목록 가져오기
             memberDTO member = memberDao.findByMid(principal.getName());
             List<cartDTO> cartList = cartDao.listDao(member.getM_no());
             
+            // 2. 장바구니에 담긴 각 상품별로 주문 생성
             for (cartDTO cart : cartList) {
                 ordersDTO order = new ordersDTO();
                 
-                // (long) 캐스팅을 통해 타입을 확실히 맞춥니다.
+                // 가격 계산
                 long totalPrice = (long) cart.getC_price() * cart.getC_count();
+                order.setO_tp(totalPrice);
                 
-                order.setO_tp(totalPrice);          // 이제 에러 안 납니다!
-                order.setO_name(member.getM_name());
-                order.setO_addr(member.getM_addr());
-                order.setO_tel(member.getM_tel());
-                order.setD_name(member.getM_name());
-                order.setD_addr(member.getM_addr());
-                order.setD_tel(member.getM_tel());
+                // [수정 핵심] 사용자가 입력한 데이터(data)가 있으면 그것을 사용하고, 없으면 회원 기본정보 사용
+                
+                // 주문자 정보 세팅
+                order.setO_name(data.get("o_name") != null ? (String)data.get("o_name") : member.getM_name());
+                order.setO_tel(data.get("o_tel") != null ? (String)data.get("o_tel") : member.getM_tel());
+                order.setO_addr(data.get("o_addr") != null ? (String)data.get("o_addr") : member.getM_addr());
+
+                // 배송지 정보 세팅 (주문서에서 수정한 주소가 반영되는 부분)
+                order.setD_name(data.get("d_name") != null ? (String)data.get("d_name") : member.getM_name());
+                order.setD_tel(data.get("d_tel") != null ? (String)data.get("d_tel") : member.getM_tel());
+                order.setD_addr(data.get("d_addr") != null ? (String)data.get("d_addr") : member.getM_addr());
+
+                // 기타 정보 세팅
                 order.setM_no(member.getM_no());
                 order.setI_no(cart.getI_no());
                 order.setC_count(cart.getC_count());
                 order.setC_price((long)cart.getC_price());
                 
+                // DB 저장
                 ordersDao.writeDao(order); 
             }
+            
+            // 3. 결제 완료 후 장바구니 비우기
             cartDao.cleancart(member.getM_no());
+            
             return "success";
+            
         } catch (Exception e) {
             e.printStackTrace();
             return "error";

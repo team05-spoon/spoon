@@ -62,6 +62,9 @@
                         o_name: "${orderData.o_name}",
                         o_tel: "${orderData.o_tel}",
                         o_addr: "${orderData.o_addr}",
+                        d_name: "${orderData.d_name}",
+                        d_tel: "${orderData.d_tel}",
+                        d_addr: "${orderData.d_addr}",
                         i_no: "${orderData.i_no}",
                         c_count: "${orderData.c_count}",
                         c_price: "${orderData.c_price}"

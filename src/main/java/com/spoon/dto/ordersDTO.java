@@ -20,7 +20,5 @@ public class ordersDTO {
 	private int i_no;
 	private int c_count;
 	private long c_price;
-	
-	
-	
+
 }
